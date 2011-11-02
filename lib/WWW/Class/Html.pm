@@ -10,7 +10,7 @@ This module takes care of the core of L<WWW::Class>. ie: The headers, links, etc
 
 =cut
 
-$WWW::Class::Html::VERSION = '0.01';
+$WWW::Class::Html::VERSION = '0.02';
 
 use LWP::Simple 'head';
 
@@ -87,6 +87,49 @@ sub method {
     *$key = sub { $args{$key}->($self); };
 
     bless \*$key, 'WWW::Class::Html';
+}
+
+=head2 title
+
+Returns the title of the page
+
+    print $c->title;
+
+=cut
+
+sub title {
+    my $self = shift;
+    
+    return $self->{title}
+        if exists $self->{title};
+
+    if ($self->{body} =~ /<title>(.+)<\/title>/im) {
+        my $title = $1||0;
+        $self->{title} = $title;
+        return $title;
+    }
+} 
+
+=head2 doctype
+
+Returns the doctype, if one exists
+
+    print $c->doctype;
+
+=cut
+
+sub doctype {
+    my $self = shift;
+
+    return $self->{doctype}
+        if exists $self->{doctype};
+
+    while ($self->{body} =~ /<([^">]doctype(?:"[^"]+")*[^>]+)>/igs) {
+        $doctype = $1;
+        $doctype =~ s/!doctype //gi;
+        $self->{doctype} = $doctype;
+        return $doctype;
+    }
 }
 
 sub err { return 0; }

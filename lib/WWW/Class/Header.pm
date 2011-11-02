@@ -1,6 +1,6 @@
 package WWW::Class::Header;
 
-$WWW::Class::Header::VERSION = '0.01';
+$WWW::Class::Header::VERSION = '0.02';
 
 =head1 NAME
 
