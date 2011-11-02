@@ -1,7 +1,7 @@
 package WWW::Class::Html::Links;
 
 
-$WWW::Class::Html::Links::VERSION = '0.02';
+$WWW::Class::Html::Links::VERSION = '0.03';
 =head1 NAME
 
 WWW::Class::Html::Links - Results for Links

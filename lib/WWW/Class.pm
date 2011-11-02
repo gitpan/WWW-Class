@@ -1,6 +1,6 @@
 package WWW::Class;
 
-$WWW::Class::VERSION = '0.02';
+$WWW::Class::VERSION = '0.03';
 
 =head1 NAME
 
@@ -13,32 +13,32 @@ to create your own methods for each class.
 
 =head1 SYNOPSIS
 
-package main;
-use base 'WWW::Class';
-
-my $c = main->uri('http://www.google.co.uk');
-
-print "Server: " . $c->header->server;
-
-# iterate all links found on page
-foreach (@{$c->links}) {
-    print $_ . "\n";
-}
-
-# iterate the links, but also return their response code or 'Failed'
-
-my $links = $c->links({ check => 1 });
-for (keys %$links) {
-    print "$_ => $links->{$_}\n";
-}
-
-# need access to a different header accessor?
-
-$c->header->method( xcache => sub {
-    return shift->{xcache};
-});
-
-print $c->header->xcache;
+    package main;
+    use base 'WWW::Class';
+    
+    my $c = main->uri('http://www.google.co.uk');
+    
+    print "Server: " . $c->header->server;
+    
+    # iterate all links found on page
+    foreach (@{$c->links}) {
+        print $_ . "\n";
+    }
+    
+    # iterate the links, but also return their response code or 'Failed'
+    
+    my $links = $c->links({ check => 1 });
+    for (keys %$links) {
+        print "$_ => $links->{$_}\n";
+    }
+    
+    # need access to a different header accessor?
+    
+    $c->header->method( xcache => sub {
+        return shift->{xcache};
+    });
+    
+    print $c->header->xcache;
 
 =cut
 

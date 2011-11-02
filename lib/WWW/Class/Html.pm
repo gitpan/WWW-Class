@@ -10,7 +10,7 @@ This module takes care of the core of L<WWW::Class>. ie: The headers, links, etc
 
 =cut
 
-$WWW::Class::Html::VERSION = '0.02';
+$WWW::Class::Html::VERSION = '0.03';
 
 use LWP::Simple 'head';
 

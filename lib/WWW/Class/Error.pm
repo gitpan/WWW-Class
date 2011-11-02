@@ -1,6 +1,6 @@
 package WWW::Class::Error;
 
-$WWW::Class::Error = '0.02';
+$WWW::Class::Error = '0.03';
 
 =head1 NAME
 
